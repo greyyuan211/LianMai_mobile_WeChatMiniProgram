@@ -1,0 +1,2 @@
+<!--pages/chatRoom/chatRoom.wxml-->
+<chat-list wxsUrl="wss://example.qq.com"/>
