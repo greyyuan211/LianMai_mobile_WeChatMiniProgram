@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "添加已有主题",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "qui-page": "/components/qui-page/qui-page",
+    "qui-icon": "/components/qui-icon/qui-icon",
+    "qui-button": "/components/qui-button/qui-button"
+  }
+}
