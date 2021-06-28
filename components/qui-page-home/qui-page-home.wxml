@@ -1,0 +1,157 @@
+<view class="home">
+  <uni-nav-bar class="status-bar" style="{{('transform:'+navBarTransform)}}" vue-id="1bf5ef54-1"
+    title="{{forums.set_site?forums.set_site.site_name:''}}" fixed="true"
+    color="{{navTheme===$root.g0?'#000000':'#ffffff'}}" background-color="{{navTheme===$root.g1?'#ffffff':'#2e2f30'}}"
+    status-bar="{{true}}" bind:__l="__l"></uni-nav-bar>
+  <qui-header vue-id="1bf5ef54-2" head-img="{{forums.set_site?forums.set_site.site_header_logo:''}}"
+    background-head-full-img="{{forums.set_site?forums.set_site.site_background_image:''}}" theme="{{theme}}"
+    theme-num="{{forums.set_site?forums.other.count_users:''}}"
+    post-num="{{forums.set_site?forums.other.count_threads:''}}" share-btn="{{shareBtn}}" share-show="{{shareShow}}"
+    color="#1878F3" is-show-more="{{false}}" is-show-back="{{false}}" is-show-home="{{false}}"
+    data-event-opts="{{[['^click',[['open']]],['^closeShare',[['closeShare']]]]}}" bind:click="__e"
+    bind:closeShare="__e" bind:__l="__l"></qui-header>
+  <view class="nav" style="{{(headerShow?'':'width:100%;position:fixed;z-index:9;top:'+navbarHeight+'px;')}}"
+    id="navId">
+    <view class="nav__box">
+      <qui-icon class="nav__box__icon" vue-id="1bf5ef54-3" name="icon-screen" size="32"
+        color="{{show?'#1878F3':'#777'}}" data-event-opts="{{[['^tap',[['showFilter']]]]}}" bind:tap="__e"
+        bind:__l="__l"></qui-icon>
+    </view>
+    <u-tabs class="scroll-tab" vue-id="1bf5ef54-4" list="{{categories}}" current="{{categoryIndex}}"
+      is-scroll="isScroll" active-color="#1878F3"
+      data-event-opts="{{[['^change',[['toggleTab']]],['^handleclickopenlist',[['handleClickOpenList']]]]}}"
+      bind:change="__e" bind:handleclickopenlist="__e" bind:__l="__l"></u-tabs>
+  </view>
+  <block wx:if="{{sticky.length>0}}">
+    <view class="sticky" style="{{(headerShow?'margin-top:20rpx':'margin-top:130rpx')}}">
+      <view class="sticky__box">
+        <block wx:for="{{sticky}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view data-event-opts="{{[['tap',[['stickyClick',['$0'],[[['sticky','',index,'pid']]]]]]]}}"
+            class="sticky__isSticky" bindtap="__e">
+            <view class="sticky__isSticky__box">{{$root.g2}}</view>
+            <block wx:if="{{item.type==1&&item.title}}">
+              <view class="sticky__isSticky__count">{{''+item.title+''}}</view>
+            </block>
+            <block wx:else>
+              <view class="sticky__isSticky__count">
+                <qui-uparse class="sticky__isSticky__text" vue-id="{{'1bf5ef54-5-'+index}}" content="{{item.title}}"
+                  bind:__l="__l"></qui-uparse>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+  <view class="main" id="main">
+    <block wx:for="{{$root.l0}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+      <qui-content class="ivideo vue-ref-in-for" vue-id="{{'1bf5ef54-6-'+index}}" item="{{item.$orig}}"
+        currentindex="{{index}}"
+        pay-status="{{item.$orig.thread.price>0&&item.$orig.thread.paid||item.$orig.thread.price==0}}"
+        user-name="{{item.$orig&&item.$orig.user&&item.$orig.user.userName}}"
+        is-real="{{item.$orig&&item.$orig.user&&item.$orig.user.isRealName}}"
+        theme-image="{{item.$orig&&item.$orig.user&&item.$orig.user.avatar}}"
+        answer-image="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.avatarUrl}}"
+        them-pay-btn="{{item.$orig.thread.price>0||item.$orig.thread.attachmentPrice>0}}"
+        user-groups="{{[item.$orig.group]}}" user-answer-groups="{{item.m0}}"
+        theme-time="{{item.$orig.thread.createdAt}}"
+        theme-time-answer="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.answeredAt}}"
+        theme-content="{{item.$orig.thread.type==1?item.$orig.thread.title:item.$orig.thread.summary}}"
+        thread-type="{{item.$orig.thread.type}}"
+        media-url="{{item.$orig.thread.extension&&item.$orig.thread.extension.video&&item.$orig.thread.extension.video.mediaUrl}}"
+        is-great="{{item.$orig.thread&&item.$orig.thread.isLiked}}"
+        theme-like="{{item.$orig.thread&&item.$orig.thread.likedCount}}" theme-comment="{{item.$orig.thread.postCount}}"
+        images-list="{{item.$orig.attachment}}"
+        post-goods="{{item.$orig.thread.extension&&item.$orig.thread.extension.goods?item.$orig.thread.extension.goods:''}}"
+        theme-essence="{{item.$orig.thread.isEssence}}"
+        video-width="{{item.$orig.thread.extension&&item.$orig.thread.extension.video&&item.$orig.thread.extension.video.width}}"
+        video-height="{{item.$orig.thread.extension&&item.$orig.thread.extension.video&&item.$orig.thread.extension.video.height}}"
+        video-id="{{item.$orig.thread.extension&&item.$orig.thread.extension.video&&item.$orig.thread.extension.video.id}}"
+        cover-image="{{item.$orig.thread.extension&&item.$orig.thread.extension.video&&item.$orig.thread.extension.video.coverUrl}}"
+        duration="{{item.$orig.thread.extension&&item.$orig.thread.extension.video&&item.$orig.thread.extension.video.duration}}"
+        is-deleted="{{item.$orig.isDeleted}}" scroll-top="{{scrollTop}}"
+        questions-name="{{item.$orig&&item.$orig.user&&item.$orig.user.userName}}"
+        be-ask-name="{{item.$orig.thread.extension&&item.$orig.thread.extension.question?item.$orig.thread.extension.question.beUserName:''}}"
+        question-content="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.content}}"
+        add-ask="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.isAnswer}}"
+        onlooker-number="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.onlookerNumber}}"
+        free-ask="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.price==0}}"
+        ask-price="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.price}}"
+        ask-content="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.content}}"
+        onlooker-unit-price="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.onlookerUnitPrice}}"
+        on-looker="{{item.$orig.thread.extension&&item.$orig.thread.extension.question&&item.$orig.thread.extension.question.onlookerUnitPrice==0}}"
+        thread-position="{{item.$orig.thread.location?[item.$orig.thread.location,item.$orig.thread.address,item.$orig.thread.longitude,item.$orig.thread.latitude]:[]}}"
+        thread-audio="{{item.$orig.thread.threadAudio||item.$orig.thread&&item.$orig.thread.extension&&item.$orig.thread.extension.video}}"
+        is-new-interface="{{!!(item.$orig.thread&&item.$orig.thread.extension&&item.$orig.thread.extension.video)}}"
+        data-ref="{{'myVideo'+index}}"
+        data-event-opts="{{[['^click',[['handleClickShare',['$0'],[[['threads','',index]]]]]],['^handleIsGreat',[['handleIsGreat',['$0','$1','$2','$3','$4'],[[['threads','',index,'thread.firstPostId']],[['threads','',index,'thread.canLike']],[['threads','',index,'thread.isLiked']],[['threads','',index,'thread.likedCount']],[['threads','',index,'thread']]]]]],['^commentClick',[['commentClick',['$0'],[[['threads','',index,'thread.pid']]]]]],['^contentClick',[['contentClick',['$0'],[[['threads','',index]]]]]],['^answeClick',[['answeClick',['$0'],[[['threads','',index,'user.pid']]]]]],['^beAskClick',[['beAskClick',['$0'],[[['threads','',index,'thread.extension.question.userId']]]]]],['^backgroundClick',[['contentClick',['$0'],[[['threads','',index]]]]]],['^headClick',[['headClick',['$0'],[[['threads','',index,'user.pid']]]]]],['^headAnswerClick',[['headAnswerClick',['$0'],[[['threads','',index,'thread.extension.question.beUserId']]]]]],['^videoPlay',[['handleVideoPlay']]],['^scrollheight',[['scrpllsip']]],['^fullscreenchange',[['screenplayback']]],['^scrollsetup',[['scrollsetups']]]]}}"
+        bind:click="__e" bind:handleIsGreat="__e" bind:commentClick="__e" bind:contentClick="__e" bind:answeClick="__e"
+        bind:beAskClick="__e" bind:backgroundClick="__e" bind:headClick="__e" bind:headAnswerClick="__e"
+        bind:videoPlay="__e" bind:scrollheight="__e" bind:fullscreenchange="__e" bind:scrollsetup="__e" bind:__l="__l">
+      </qui-content>
+    </block>
+    <qui-load-more vue-id="1bf5ef54-7" status="{{loadingType}}" bind:__l="__l"></qui-load-more>
+  </view>
+  <view class="wxcopyright"><text>{{$root.g3}}</text></view>
+  <qui-filter-modal class="vue-ref" vue-id="1bf5ef54-8" confirm-text="{{$root.g4}}" if-need-confirm="{{ifNeedConfirm}}"
+    filter-list="{{filterList}}" show-search="{{showSearch}}" content-top="{{filterTop}}"
+    categories-data="{{categories}}" data-ref="filter" value="{{show}}"
+    data-event-opts="{{[['^confirm',[['confirm']]],['^changeSelected',[['changeSelected']]],['^change',[['changeType']]],['^searchClick',[['searchClick']]],['^input',[['__set_model',['','show','$event',[]]]]]]}}"
+    bind:confirm="__e" bind:changeSelected="__e" bind:change="__e" bind:searchClick="__e" bind:input="__e"
+    bind:__l="__l"></qui-filter-modal>
+  <uni-popup-copy class="vue-ref" vue-id="1bf5ef54-9" type="top" data-ref="clickOpenList"
+    data-event-opts="{{[['^changeScroll',[['isChangeScroll']]]]}}" bind:changeScroll="__e" bind:__l="__l"
+    vue-slots="{{['default']}}">
+    <scroll-view class="openOfList" scroll-y="true">
+      <block wx:for="{{listItmeChildren}}" wx:for-item="itme" wx:for-index="index" wx:key="index">
+        <view
+          data-event-opts="{{[['tap',[['handleClickSearch',['$0'],[[['listItmeChildren','',index,'searchIds']]]]]]]}}"
+          class="{{[isActives==itme.searchIds?'openOfListItmeActive openOfListItme':'openOfListItme']}}" bindtap="__e">
+          <view class="openOfListItmeText">{{itme.name}}</view>
+          <qui-icon class="arrow" vue-id="{{('1bf5ef54-10-'+index)+','+('1bf5ef54-9')}}" name="icon-folding-r" size="26"
+            color="{{isActives==index?'#1878F3':'#ddd'}}" bind:__l="__l"></qui-icon>
+        </view>
+      </block>
+    </scroll-view>
+  </uni-popup-copy>
+  <uni-popup class="vue-ref" vue-id="1bf5ef54-11" type="bottom" data-ref="popupHead" bind:__l="__l"
+    vue-slots="{{['default']}}">
+    <view class="popup-share">
+      <view class="popup-share-content"><button class="popup-share-button" open-type="share" plain="true"
+          id="top"></button>
+        <block wx:for="{{bottomData}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view class="popup-share-content-box">
+            <view class="popup-share-content-image">
+              <view data-event-opts="{{[['tap',[['shareHead',[index]]]]]}}" class="popup-share-box" bindtap="__e">
+                <qui-icon class="content-image" vue-id="{{('1bf5ef54-12-'+index)+','+('1bf5ef54-11')}}"
+                  name="{{item.icon}}" size="46" color="#777777" bind:__l="__l"></qui-icon>
+              </view>
+            </view><text class="popup-share-content-text">{{item.text}}</text>
+          </view>
+        </block>
+      </view>
+      <view class="popup-share-content-space"></view><text data-event-opts="{{[['tap',[['cancel',['share']]]]]}}"
+        class="popup-share-btn" bindtap="__e">{{$root.g5}}</text>
+    </view>
+  </uni-popup>
+  <uni-popup class="vue-ref" vue-id="1bf5ef54-13" type="bottom" data-ref="popupContent" bind:__l="__l"
+    vue-slots="{{['default']}}">
+    <view class="popup-share">
+      <view class="popup-share-content"><button class="popup-share-button" open-type="share" plain="true"></button>
+        <block wx:for="{{bottomData}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <view class="popup-share-content-box">
+            <view class="popup-share-content-image">
+              <view data-event-opts="{{[['tap',[['shareContent',[index]]]]]}}" class="popup-share-box" bindtap="__e">
+                <qui-icon class="content-image" vue-id="{{('1bf5ef54-14-'+index)+','+('1bf5ef54-13')}}"
+                  name="{{item.icon}}" size="46" color="#777777" bind:__l="__l"></qui-icon>
+              </view>
+            </view><text class="popup-share-content-text">{{item.text}}</text>
+          </view>
+        </block>
+      </view>
+      <view class="popup-share-content-space"></view><text data-event-opts="{{[['tap',[['cancel',['share']]]]]}}"
+        class="popup-share-btn" bindtap="__e">{{$root.g6}}</text>
+    </view>
+  </uni-popup>
+  <qui-toast class="vue-ref" vue-id="1bf5ef54-15" data-ref="toast" bind:__l="__l"></qui-toast>
+</view>

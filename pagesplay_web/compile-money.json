@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "添加红包",
+  "usingComponents": {
+    "qui-page": "/components/qui-page/qui-page"
+  }
+}

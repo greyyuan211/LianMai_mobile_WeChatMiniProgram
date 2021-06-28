@@ -1,0 +1,1 @@
+<text data-event-opts="{{[['tap',[['handleClick',['$event']]]]]}}" class="{{['data-v-6d8640a2',cssClass]}}" style="{{'color:'+(color)+';'+('font-size:'+(size+'rpx')+';')}}" bindtap="__e"><block wx:if="{{dot}}"><text class="{{['data-v-6d8640a2',dotClass]}}">{{badge}}</text></block></text>
