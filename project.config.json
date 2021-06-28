@@ -1,16 +1,16 @@
 {
-  "description": "项目配置文件",
+  "description": "项目配置文件。",
   "packOptions": {
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": false,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": true,
-    "newFeature": true,
+    "newFeature": false,
     "coverView": true,
     "nodeModules": false,
     "autoAudits": false,
@@ -30,7 +30,6 @@
       "outputPath": ""
     },
     "enableEngineNative": false,
-    "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
@@ -40,15 +39,9 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.11.0",
+  "libVersion": "",
   "appid": "wxb60595410e8aeff7",
-  "projectname": "chatComponent",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
+  "projectname": "lianmaiWeChat",
   "condition": {
     "search": {
       "list": []
@@ -57,7 +50,6 @@
       "list": []
     },
     "game": {
-      "currentL": -1,
       "list": []
     },
     "miniprogram": {

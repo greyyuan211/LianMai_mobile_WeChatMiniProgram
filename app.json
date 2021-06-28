@@ -1,21 +1,147 @@
 {
   "pages": [
-    
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/chatRoom/chatRoom"
+    "pages/home/index",
+    "pages/topic/content",
+    "pages/topic/position",
+    "pages/topic/list",
+    "pages/topic/topic",
+    "pages/topic/parse-goods",
+    "pages/topic/attachment",
+    "pages/topic/comment",
+    "pages/my/profile",
+    "pages/my/wallet",
+    "pages/my/freeze",
+    "pages/my/withdrawalslist",
+    "pages/my/walletlist",
+    "pages/my/orderlist",
+    "pages/my/favorite",
+    "pages/my/shield",
+    "pages/profile/index",
+    "pages/site/index",
+    "pages/site/info",
+    "pages/site/payH5",
+    "pages/site/partner-invite",
+    "pages/site/search",
+    "pages/site/search-theme",
+    "pages/site/search-user",
+    "pages/notice/notice",
+    "pages/notice/msglist",
+    "pages/common/message",
+    "pages/common/error",
+    "pages/share/topic",
+    "pages/share/site",
+    "pages/common/view"
+  ],
+  "subPackages": [
+    {
+      "root": "topic",
+      "pages": [
+        "post",
+        "index"
+      ]
+    },
+    {
+      "root": "pages/user",
+      "pages": [
+        "phone-login",
+        "at-member",
+        "phone-login-register",
+        "uc-login",
+        "wechat",
+        "pc-login",
+        "pc-relation",
+        "login-bind",
+        "login-bind-phone",
+        "register-bind",
+        "register-bind-phone",
+        "login",
+        "register",
+        "supple-mentary",
+        "warning"
+      ]
+    },
+    {
+      "root": "pages/invite",
+      "pages": [
+        "index",
+        "invited",
+        "income",
+        "user"
+      ]
+    },
+    {
+      "root": "pages/manage",
+      "pages": [
+        "index",
+        "member",
+        "users",
+        "invite"
+      ]
+    },
+    {
+      "root": "pages/modify",
+      "pages": [
+        "rightdetails",
+        "editusername",
+        "mobile",
+        "setphon",
+        "paypwd",
+        "editpwd",
+        "realname",
+        "signature",
+        "newpwd",
+        "findpwd",
+        "authen",
+        "right",
+        "withdrawals"
+      ]
+    },
+    {
+      "root": "pagesplay_web",
+      "pages": [
+        "compile-money",
+        "AddTheTheme",
+        "Addanexisting-theme",
+        "drafts",
+        "my_purchase",
+        "reward-to-ask"
+      ]
+    }
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "backgroundColor": "#F8F8F8"
   },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json",
+  "preloadRule": {
+    "pages/home/index": {
+      "network": "all",
+      "packages": [
+        "topic",
+        "pages/user"
+      ]
+    },
+    "topic/post": {
+      "network": "all",
+      "packages": [
+        "__APP__"
+      ]
+    },
+    "topic/index": {
+      "network": "all",
+      "packages": [
+        "__APP__"
+      ]
+    }
+  },
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+      "desc": "小程序将使用定位功能"
     }
-  }
+  },
+  "usingComponents": {
+    "painter": "/wxcomponents/painter/painter"
+  },
+  "sitemapLocation": "sitemap.json"
 }

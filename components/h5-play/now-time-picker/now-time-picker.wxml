@@ -1,0 +1,1 @@
+<view class="time"><picker range="{{years}}" mode="multiSelector" data-event-opts="{{[['change',[['yearChange',['$event']]]],['columnchange',[['wctchPicker',['$event']]]]]}}" bindchange="__e" bindcolumnchange="__e">{{''+timeValue+''}}</picker></view>
